@@ -1,0 +1,364 @@
+/* ================================================================
+   Paste-to-Product — Global Design System
+   Skills: minimalist-ui · design-taste-frontend · apple-design · animate · ui-ux-pro-max
+   Palette: Warm monochrome + success green accent + urgency orange CTA
+   Typography: Rubik (display) + Nunito Sans (body) + Geist Mono (code)
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&display=swap');
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  /* Canvas — warm off-white (minimalist-ui §4) */
+  --canvas:        #FBFBFA;
+  --canvas-raised: #FFFFFF;
+  --canvas-sunken: #F5F4F1;
+
+  /* Text (minimalist-ui §3 — never absolute black) */
+  --text-primary:   #111111;
+  --text-secondary: #555555;
+  --text-muted:     #787774;
+  --text-faint:     #AEAEAD;
+
+  /* Structural borders (minimalist-ui §4 — ultra-light) */
+  --border:       #EAEAEA;
+  --border-mid:   rgba(0, 0, 0, 0.10);
+  --border-focus: #059669;
+
+  /* Accent — success green (ui-ux-pro-max palette) */
+  --accent:          #059669;
+  --accent-hover:    #047857;
+  --accent-light:    #ECFDF5;
+  --accent-text:     #064E3B;
+
+  /* CTA — urgency orange (ui-ux-pro-max §accent/CTA) */
+  --cta:         #EA580C;
+  --cta-hover:   #C2410C;
+  --cta-light:   #FFF7ED;
+  --cta-text:    #7C2D12;
+
+  /* Semantic */
+  --success:     #059669;
+  --success-bg:  #ECFDF5;
+  --success-text:#064E3B;
+
+  --warning:     #D97706;
+  --warning-bg:  #FFFBEB;
+  --warning-text:#92400E;
+
+  --danger:      #DC2626;
+  --danger-bg:   #FEF2F2;
+  --danger-text: #7F1D1D;
+
+  --info:        #2563EB;
+  --info-bg:     #EFF6FF;
+  --info-text:   #1E3A8A;
+
+  /* Pastels — muted spot accents (minimalist-ui §4) */
+  --pastel-green-bg:  #EDF3EC;
+  --pastel-green-fg:  #346538;
+  --pastel-blue-bg:   #E1F3FE;
+  --pastel-blue-fg:   #1F6C9F;
+  --pastel-amber-bg:  #FBF3DB;
+  --pastel-amber-fg:  #956400;
+  --pastel-red-bg:    #FDEBEC;
+  --pastel-red-fg:    #9F2F2D;
+
+  /* Shadows — ultra-diffuse < 0.05 opacity (minimalist-ui §2) */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.05);
+
+  /* Radii — crisp (minimalist-ui §5) */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+
+  /* Typography */
+  --font-display: 'Rubik', 'Helvetica Neue', system-ui, sans-serif;
+  --font-body:    'Nunito Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono:    'Geist Mono', 'SF Mono', 'JetBrains Mono', monospace;
+
+  /* Motion — animate skill: 600ms cubic-bezier(0.16, 1, 0.3, 1) */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-back-out:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:  150ms;
+  --duration-base:  250ms;
+  --duration-slow:  400ms;
+  --duration-reveal:600ms;
+
+  /* Layout */
+  --max-content: 1280px;
+  --max-text:    65ch;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh; /* design-taste-frontend: min-h-[100dvh] rule */
+}
+
+/* ── Typography (minimalist-ui §3, Rubik for display) ─────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.04em; }
+h2 { font-size: clamp(1.375rem, 3vw, 1.875rem); font-weight: 700; }
+h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
+h4 { font-size: 0.9375rem; font-weight: 600; letter-spacing: 0; }
+
+p {
+  max-width: var(--max-text);
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+a:hover { color: var(--accent-hover); }
+
+/* ── Accessibility focus (ui-ux-pro-max priority 1) ────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* ── Utility ───────────────────────────────────────────────── */
+.mono { font-family: var(--font-mono); }
+.display { font-family: var(--font-display); }
+
+/* ── Buttons (minimalist-ui §5) ────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  border-radius: var(--radius-sm); /* crisp: 4–6px per minimalist-ui */
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-standard);
+  white-space: nowrap;
+  user-select: none;
+  text-decoration: none;
+}
+
+/* Primary: solid #111111, white text — minimalist-ui §5 */
+.btn-primary {
+  background: var(--text-primary);
+  color: #FFFFFF;
+}
+.btn-primary:hover  { background: #333333; }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* CTA: orange for conversion moments (ui-ux-pro-max §accent) */
+.btn-cta {
+  background: var(--cta);
+  color: #FFFFFF;
+}
+.btn-cta:hover  { background: var(--cta-hover); }
+.btn-cta:active { transform: scale(0.98); }
+
+/* Secondary: neutral outlined */
+.btn-secondary {
+  background: var(--canvas-raised);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--canvas-sunken);
+  border-color: var(--border-mid);
+}
+.btn-secondary:active { transform: scale(0.98); }
+
+/* Ghost: transparent */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.75rem;
+}
+.btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary);
+}
+
+/* Accent: green for positive actions */
+.btn-accent {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+.btn-accent:hover  { background: var(--accent-hover); }
+.btn-accent:active { transform: scale(0.98); }
+
+.btn-sm { padding: 0.4rem 0.875rem; font-size: 0.8125rem; }
+.btn-xs { padding: 0.3rem 0.625rem; font-size: 0.75rem; }
+
+/* ── Badges — pill shaped, tiny uppercase (minimalist-ui §5) ─ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.625rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-exact   { background: var(--pastel-green-bg); color: var(--pastel-green-fg); }
+.badge-variant { background: var(--pastel-blue-bg);  color: var(--pastel-blue-fg);  }
+.badge-match   { background: var(--pastel-amber-bg); color: var(--pastel-amber-fg); }
+.badge-weak    { background: var(--pastel-red-bg);   color: var(--pastel-red-fg);   }
+.badge-cached  { background: var(--accent-light);    color: var(--accent-text);     }
+.badge-live    { background: var(--cta-light);       color: var(--cta-text);        }
+
+/* ── Confidence bar ─────────────────────────────────────────── */
+.confidence-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.confidence-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width var(--duration-slow) var(--ease-standard);
+}
+.confidence-high   { background: var(--success); }
+.confidence-medium { background: var(--warning); }
+.confidence-low    { background: var(--danger);  }
+
+/* ── Skeleton shimmer (ui-ux-pro-max: match layout sizes) ──── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0;  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--canvas-sunken) 25%,
+    rgba(255,255,255,0.7) 50%,
+    var(--canvas-sunken) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Reveal animations (animate skill + minimalist-ui §7) ──── */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes revealIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes revealRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+/* Stagger grid items (animate skill GSAP pattern in CSS) */
+@keyframes gridReveal {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+/* Background ambient (minimalist-ui §7 — very slow, low opacity) */
+@keyframes ambientDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(2%, 1.5%) scale(1.02); }
+  66%  { transform: translate(-1.5%, 2%) scale(0.99); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.animate-reveal-up {
+  animation: revealUp var(--duration-reveal) var(--ease-out-expo) both;
+}
+.animate-reveal-in {
+  animation: revealIn var(--duration-base) ease both;
+}
+.animate-reveal-right {
+  animation: revealRight var(--duration-slow) var(--ease-out-expo) both;
+}
+.animate-scale-in {
+  animation: scaleIn var(--duration-slow) var(--ease-back-out) both;
+}
+.animate-grid-item {
+  animation: gridReveal 0.4s var(--ease-back-out) both;
+}
+
+/* ── Scrollbar (minimal) ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
+
+/* ── Reduced motion (design-taste-frontend §5 + ui-ux-pro-max) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Responsive base ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  html  { font-size: 15px; }
+  .container { padding: 0 1rem; }
+}
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+}

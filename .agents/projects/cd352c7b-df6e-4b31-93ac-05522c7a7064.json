@@ -1,0 +1,15 @@
+{
+  "id": "cd352c7b-df6e-4b31-93ac-05522c7a7064",
+  "name": "Skills",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///c%3A/Users/raj/Hackathons/Skills",
+          "defaultBranch": "main",
+          "allowWrite": true
+        }
+      }
+    ]
+  }
+}

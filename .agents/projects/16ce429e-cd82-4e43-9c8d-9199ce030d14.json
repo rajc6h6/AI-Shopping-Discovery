@@ -1,0 +1,14 @@
+{
+  "id": "16ce429e-cd82-4e43-9c8d-9199ce030d14",
+  "name": "Task1",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///c%3A/Users/raj/waste/Task1",
+          "allowWrite": true
+        }
+      }
+    ]
+  }
+}

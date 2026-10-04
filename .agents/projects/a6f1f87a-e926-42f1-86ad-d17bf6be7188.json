@@ -1,0 +1,14 @@
+{
+  "id": "a6f1f87a-e926-42f1-86ad-d17bf6be7188",
+  "name": "GSOC2",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///c%3A/Users/raj/GSOC2",
+          "allowWrite": true
+        }
+      }
+    ]
+  }
+}

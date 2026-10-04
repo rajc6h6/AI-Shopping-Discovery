@@ -1,0 +1,15 @@
+{
+  "id": "55b1f66c-a938-47ca-ae84-3caf94bdf990",
+  "name": "Website",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///c%3A/Users/raj/OneDrive/Documents/Resume/Website",
+          "defaultBranch": "main",
+          "allowWrite": true
+        }
+      }
+    ]
+  }
+}

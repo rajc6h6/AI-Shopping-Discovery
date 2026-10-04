@@ -1,0 +1,520 @@
+/* OfflineMode.module.css — design tokens match the existing page.module.css system */
+
+/* ── Location prompt ─────────────────────────────────────────────────────── */
+.locationPrompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  gap: 0.75rem;
+}
+
+.promptIcon {
+  color: var(--text-tertiary, #6b7280);
+  margin-bottom: 0.25rem;
+}
+
+.promptTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary, #111);
+  margin: 0;
+}
+
+.promptDesc {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #6b7280);
+  max-width: 340px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.promptSpinner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary, #9ca3af);
+  margin-top: 0.5rem;
+}
+
+.spinner {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.retryBtn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border, #e5e7eb);
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-primary, #111);
+  transition: background 120ms, border-color 120ms;
+}
+
+.retryBtn:hover {
+  background: var(--bg-subtle, #f9fafb);
+  border-color: var(--text-tertiary, #9ca3af);
+}
+
+/* ── Honesty banner ──────────────────────────────────────────────────────── */
+.honestyBanner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, #f59e0b 8%, transparent);
+  border: 1px solid color-mix(in srgb, #f59e0b 25%, transparent);
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #6b7280);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.honestyIcon {
+  color: #d97706;
+  flex-shrink: 0;
+}
+
+.errorNote {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, #ef4444 8%, transparent);
+  border: 1px solid color-mix(in srgb, #ef4444 20%, transparent);
+  font-size: 0.8125rem;
+  color: #b91c1c;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Root layout ─────────────────────────────────────────────────────────── */
+.offlineRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Map + list two-column layout ────────────────────────────────────────── */
+.mapListLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .mapListLayout {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ── Map ─────────────────────────────────────────────────────────────────── */
+.mapWrapper {
+  position: relative;
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border, #e5e7eb);
+  background: #f3f4f6;
+}
+
+.mapPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-tertiary, #9ca3af);
+  font-size: 0.875rem;
+}
+
+.mapEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.5rem;
+  color: var(--text-tertiary, #9ca3af);
+  font-size: 0.8125rem;
+}
+
+.mapLoadingOverlay {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.875rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border, #e5e7eb);
+  font-size: 0.8rem;
+  color: var(--text-secondary, #6b7280);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── Store list ──────────────────────────────────────────────────────────── */
+.storeList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+/* ── Seller legend ───────────────────────────────────────────────────────── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #6b7280);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Store card ──────────────────────────────────────────────────────────── */
+.storeCard {
+  position: relative;
+  display: flex;
+  border-radius: 10px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: var(--bg-card, #fff);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 120ms, box-shadow 120ms;
+}
+
+.storeCard:hover {
+  border-color: #9ca3af;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.storeCard.selected {
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.08);
+}
+
+.storeCard:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+/* Left colour accent stripe */
+.storeAccent {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+
+.storeCardBody {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0.875rem 0.75rem 0.625rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.storeThumbnail {
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border, #e5e7eb);
+}
+
+.storeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.storeHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.storeName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary, #111);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.storeType {
+  font-size: 0.72rem;
+  color: var(--text-tertiary, #9ca3af);
+  display: block;
+  margin-top: 1px;
+}
+
+.storeDistance {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary, #6b7280);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.storeRating {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+}
+
+.star {
+  color: #f59e0b;
+}
+
+.ratingValue {
+  font-weight: 600;
+  color: var(--text-primary, #111);
+}
+
+.reviewCount {
+  color: var(--text-tertiary, #9ca3af);
+}
+
+.openState {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.open {
+  background: color-mix(in srgb, #059669 10%, transparent);
+  color: #065f46;
+}
+
+.closed {
+  background: color-mix(in srgb, #ef4444 10%, transparent);
+  color: #991b1b;
+}
+
+.storeAddress {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--text-tertiary, #9ca3af);
+  line-height: 1.4;
+}
+
+.storeAddress svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Evidence line — the "why is this shown" text */
+.evidenceLine {
+  font-size: 0.72rem;
+  color: var(--text-secondary, #6b7280);
+  background: var(--bg-subtle, #f9fafb);
+  border-radius: 5px;
+  padding: 0.3rem 0.5rem;
+  line-height: 1.4;
+  border-left: 2.5px solid #e5e7eb;
+}
+
+/* ── Store actions ───────────────────────────────────────────────────────── */
+.storeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.125rem;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.625rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid #111;
+  color: #111;
+  background: transparent;
+  transition: background 120ms, color 120ms;
+  cursor: pointer;
+}
+
+.actionBtn:hover {
+  background: #111;
+  color: #fff;
+}
+
+.actionBtnSecondary {
+  border-color: var(--border, #e5e7eb);
+  color: var(--text-secondary, #6b7280);
+}
+
+.actionBtnSecondary:hover {
+  background: var(--bg-subtle, #f9fafb);
+  color: var(--text-primary, #111);
+}
+
+/* ── Online-only section ─────────────────────────────────────────────────── */
+.onlineOnlySection {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: var(--bg-subtle, #f9fafb);
+}
+
+.onlineOnlyTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary, #6b7280);
+  margin: 0 0 0.4rem 0;
+}
+
+.onlineOnlyList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.onlineOnlyTag {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  color: var(--text-tertiary, #9ca3af);
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 2.5rem 1rem;
+  color: var(--text-tertiary, #9ca3af);
+}
+
+.emptyIcon {
+  opacity: 0.4;
+}
+
+.emptyState h4 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-secondary, #6b7280);
+  margin: 0;
+}
+
+.emptyState p {
+  font-size: 0.8125rem;
+  max-width: 280px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Skeleton loading ────────────────────────────────────────────────────── */
+.skeletonCard {
+  pointer-events: none;
+}
+
+.skeletonThumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e9eaec 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.skeletonLine {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e9eaec 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .storeCard {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+  }
+  .storeCard:hover { border-color: #444; }
+  .storeCard.selected { border-color: #e5e7eb; }
+  .evidenceLine { background: #222; border-left-color: #333; }
+  .honestyBanner { background: rgba(245, 158, 11, 0.08); }
+  .onlineOnlySection { background: #1a1a1a; border-color: #2a2a2a; }
+  .onlineOnlyTag { background: #111; border-color: #333; }
+  .mapWrapper { border-color: #2a2a2a; background: #1a1a1a; }
+  .skeletonLine, .skeletonThumb {
+    background: linear-gradient(90deg, #222 25%, #2a2a2a 50%, #222 75%);
+    background-size: 200% 100%;
+  }
+  .brandSourceNote {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+    color: #9ca3af;
+  }
+}
+
+.brandSourceNote {
+  background: var(--bg-surface, #ffffff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #4b5563);
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-style: italic;
+}
