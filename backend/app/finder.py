@@ -74,6 +74,7 @@ async def find_products(
                 rating=result.get("rating"),
                 reviews=result.get("reviews"),
                 product_id=result.get("product_id"),
+                immersive_product_page_token=result.get("immersive_product_page_token"),
                 engine_used="google_shopping",
                 position=result.get("position", 0),
             )

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import {
   ShoppingBag, MagnifyingGlass, CheckCircle, Warning, WarningCircle, 
   X, CaretDown, CaretUp, Star, Package, TrendUp, Sparkle, Tag, MagnifyingGlassPlus, ShieldCheck, ArrowRight,
@@ -16,12 +16,13 @@ import {
 } from '@/lib/api';
 import OfflineMode, { type OfflineSeller } from '@/components/OfflineMode';
 import { EXAMPLE_CHATS } from '@/lib/examples';
+import { decodeChatFromHash } from '@/lib/extension-handoff';
 import styles from './page.module.css';
 
 export default function PasteToProductClient() {
   const [chatText, setChatText] = useState('');
   const [market, setMarket] = useState('in');
-  const [audience, setAudience] = useState<'male' | 'female' | ''>('');
+  const [audience, setAudience] = useState<'male' | 'female'>('male');
   const [isSearching, setIsSearching] = useState(false);
   const [parsedItems, setParsedItems] = useState<ParsedItem[]>([]);
   const [itemResults, setItemResults] = useState<ItemResult[]>([]);
@@ -30,6 +31,7 @@ export default function PasteToProductClient() {
   const [searchComplete, setSearchComplete] = useState(false);
   const [serpApiCalls, setSerpApiCalls] = useState(0);
   const [hasParseWarning, setHasParseWarning] = useState(false);
+  const [extensionReceived, setExtensionReceived] = useState(false);
 
   // Offline mode toggle ('online' | 'offline')
   const [offlineMode, setOfflineMode] = useState<'online' | 'offline'>('online');
@@ -51,8 +53,9 @@ export default function PasteToProductClient() {
     }
   }, [traceEvents, compareTrace]);
 
-  const handleSearch = async () => {
-    if (!chatText.trim() || isSearching) return;
+  // Thin wrapper shared by the manual button and the extension hand-off.
+  const runPipeline = useCallback(async (text: string) => {
+    if (!text.trim() || isSearching) return;
 
     setIsSearching(true);
     setParsedItems([]);
@@ -64,7 +67,7 @@ export default function PasteToProductClient() {
     setHasParseWarning(false);
 
     try {
-      await streamSearch(chatText, market, audience as 'male' | 'female', {
+      await streamSearch(text, market, audience as 'male' | 'female', {
         onItemParsed: (item) => {
           setParsedItems((prev) => [...prev, item]);
         },
@@ -85,14 +88,31 @@ export default function PasteToProductClient() {
           setHasParseWarning(true);
         },
       });
-    } catch (err) {
+    } catch {
       setError('Failed to connect to the server. Make sure the backend is running.');
     } finally {
       setIsSearching(false);
     }
-  };
+  }, [audience, isSearching, market]);
 
-  const handleCompare = async (title: string, attributes: Record<string, string>) => {
+  const handleSearch = () => runPipeline(chatText);
+
+  useEffect(() => {
+    const text = decodeChatFromHash(window.location.hash);
+    if (text === null) return;
+
+    window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    window.queueMicrotask(() => {
+      setChatText(text);
+      setExtensionReceived(true);
+      setTimeout(() => {
+        const btn = document.getElementById('search-btn');
+        if (btn) btn.focus();
+      }, 50);
+    });
+  }, [runPipeline]);
+
+  const handleCompare = async (title: string, attributes: Record<string, string>, productId: string | null, immersiveToken: string | null) => {
     setCompareOpen(true);
     setCompareTitle(title);
     setCompareResult(null);
@@ -100,7 +120,7 @@ export default function PasteToProductClient() {
     setCompareTrace([]);
 
     try {
-      await streamCompare(title, attributes, market, audience as 'male' | 'female', {
+      await streamCompare(title, attributes, market, audience as 'male' | 'female', productId, immersiveToken, {
         onTrace: (event) => {
           setCompareTrace((prev) => [...prev, event]);
         },
@@ -153,6 +173,11 @@ export default function PasteToProductClient() {
       </header>
 
       <main className={styles.main}>
+        {extensionReceived && (
+          <div className={styles.extensionBanner} role="status">
+            Chat received from the extension
+          </div>
+        )}
         {/* Hero / Input Section */}
         {!hasResults && (
           <section className={styles.hero}>
@@ -252,6 +277,7 @@ export default function PasteToProductClient() {
                   </button>
                 )}
                 <button
+                  id="search-btn"
                   className="btn btn-cta"
                   onClick={handleSearch}
                   disabled={!chatText.trim() || !audience || isSearching}
@@ -435,7 +461,7 @@ export default function PasteToProductClient() {
                             model_name: ir.item.model_name || '',
                             colour: ir.item.colour || '',
                             material: ir.item.material || '',
-                          })}
+                          }, pr.candidate.product_id, (pr.candidate as any).immersive_product_page_token || null)}
                           rank={j}
                         />
                       ))}

@@ -268,12 +268,42 @@
   gap: 0.5rem;
 }
 
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .storeName {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-primary, #111);
   margin: 0;
   line-height: 1.3;
+}
+
+.tierBadge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.tier1 {
+  background: #fdf3c7; /* amber-100 */
+  color: #d97706;      /* amber-600 */
+}
+.tier2 {
+  background: transparent;
+  border: 1px solid #bfdbfe; /* blue-200 */
+  color: #2563eb;            /* blue-600 */
+}
+.tier3 {
+  background: transparent;
+  border: 1px solid #e5e7eb; /* gray-200 */
+  color: #6b7280;            /* gray-500 */
 }
 
 .storeType {
@@ -500,6 +530,15 @@
     background: linear-gradient(90deg, #222 25%, #2a2a2a 50%, #222 75%);
     background-size: 200% 100%;
   }
+  .storeName { color: #f9fafb; }
+  .ratingValue { color: #f9fafb; }
+  .actionBtn { border-color: #f9fafb; color: #f9fafb; }
+  .actionBtn:hover { background: #f9fafb; color: #111; }
+  .storeDistance { color: #9ca3af; }
+  .storeAddress { color: #9ca3af; }
+  .evidenceLine { color: #9ca3af; }
+  .promptTitle { color: #f9fafb; }
+  .promptDesc { color: #9ca3af; }
   .brandSourceNote {
     background: #1a1a1a;
     border-color: #2a2a2a;

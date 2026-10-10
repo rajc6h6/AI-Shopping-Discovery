@@ -30,6 +30,11 @@ graph TD
     SerpApi --> EBAY
     SerpApi --> WMT
     BE -->|SSE: compare_complete| FE
+    FE -->|POST /api/offline| BE
+    BE -->|Gated extract| Bedrock
+    BE -->|Negative cache check| Cache
+    BE -->|search google_maps| SerpApi
+    BE -->|SSE: store_found| FE
 ```
 
 ## Component Responsibilities
@@ -74,8 +79,16 @@ graph TD
 ### `api.py` — SSE Endpoints
 - `POST /api/search`: parse → find → verify → stream
 - `POST /api/compare`: multi-platform search → stream
+- `POST /api/offline`: brand extraction → google maps search → progressive stream
 - Uses `sse-starlette` for Server-Sent Events
-- Event types: `trace`, `item_parsed`, `product_found`, `compare_complete`, `error`, `complete`
+- Event types: `trace`, `item_parsed`, `product_found`, `compare_complete`, `store_found`, `offline_complete`, `error`, `complete`
+
+### `store_finder_v2.py` — Offline Brand Search
+- 3-tier gated search enforcing a strict 30-credit budget.
+- Tier 3: Category sweep based on audience (e.g. "men's clothing store").
+- Tier 2: Multi-brand chain search (e.g. "Lifestyle store") verified by matcher.
+- Tier 1: Extract genuine brands using LLM, filter out marketplaces (Myntra, Ajio), then search brand stores.
+- `BrandLogDB`: SQLite table acting as negative cache for 10x10km cells to avoid repeating zero-result searches.
 
 ## Data Models
 

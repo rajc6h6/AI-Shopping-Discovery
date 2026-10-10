@@ -1,0 +1,1608 @@
+[
+  {
+    "query": "Peter England navy blazer formal men",
+    "audience": "male",
+    "city": "Mumbai",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Peter England Men Solid Single Breasted Casual Blazer",
+        "source": "Peter England",
+        "price": "₹4,004"
+      },
+      {
+        "title": "Peter England Men Single Breasted 2 button Solid Formal Blazer",
+        "source": "Peter England",
+        "price": "₹3,559"
+      },
+      {
+        "title": "Peter England Single Breasted 2 button Solid Formal Men Blazer",
+        "source": "Myntra - MNow",
+        "price": "₹3,539"
+      },
+      {
+        "title": "Peter England Single Breasted Formal Men Blazer",
+        "source": "Flipkart",
+        "price": "₹2,478"
+      },
+      {
+        "title": "Peter England Solid Single Breasted Formal Men Blazer",
+        "source": "Peter England",
+        "price": "₹3,159"
+      },
+      {
+        "title": "Peter England Men Navy Solid Slim Fit Formal Blazer",
+        "source": "Amazon.in",
+        "price": "₹2,895"
+      },
+      {
+        "title": "Peter England Men Single Breasted 2 button Textured Formal Blazer",
+        "source": "Peter England",
+        "price": "₹4,792"
+      },
+      {
+        "title": "Peter England Men Chevron Double Breasted Formal Blazer",
+        "source": "Myntra",
+        "price": "₹5,784"
+      },
+      {
+        "title": "Peter England Men Self Design Single Breasted Formal Blazer",
+        "source": "Peter England",
+        "price": "₹5,624"
+      },
+      {
+        "title": "Peter England Men Solid Tuxedo Style Formal Blazer",
+        "source": "Flipkart",
+        "price": "₹2,530"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 4,
+      "online_only_brand": 0,
+      "potential_brand": 6
+    },
+    "brands_extracted": [
+      {
+        "brand": "Peter England",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Myntra - MNow",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Peter",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Breasted",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Style",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Peter England",
+        "query": "Peter England store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 10,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": true,
+        "sample_titles": [
+          "Peter England",
+          "Peter England",
+          "Peter England",
+          "Peter England",
+          "Peter England factory Outlet"
+        ],
+        "sample_types": [
+          "Men's clothing store",
+          "Men's clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Store"
+        ]
+      },
+      {
+        "brand": "Myntra - MNow",
+        "query": "Myntra - MNow store",
+        "is_short_name": false,
+        "total_results": 2,
+        "correct_within_radius": 0,
+        "wrong_business": 1,
+        "too_far": 1,
+        "was_cached": false,
+        "sample_titles": [
+          "Myntra Mnow store",
+          "Nomaan"
+        ],
+        "sample_types": [
+          "Warehouse",
+          "Logistics service"
+        ]
+      },
+      {
+        "brand": "Peter",
+        "query": "Peter store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 8,
+        "wrong_business": 2,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Peter's Foodland & Sweets",
+          "Peter England",
+          "Peters Medical And General Store",
+          "Peter J Perfumes - R City Mall, Ghatkopar",
+          "Peter BMS"
+        ],
+        "sample_types": [
+          "Candy store",
+          "Clothing store",
+          "Pharmacy",
+          "Perfume store",
+          "Hardware store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "women's ethnic kurti cotton",
+    "audience": "female",
+    "city": "Mumbai",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "ANNI Designer Pure Cotton Embroidered Kurta Set for Women | Rust Orange Kurta with Pants & Dupatta | Floral Neck & Hem Embroidery | Cotton Kurta Set",
+        "source": "Amazon.in",
+        "price": "₹819"
+      },
+      {
+        "title": "Aramya IKat Kurta women Soft Cotton",
+        "source": "AJIO.com",
+        "price": "₹917"
+      },
+      {
+        "title": "Vastrakaya Ethnic Motifs Printed V-Neck Pure Cotton Blend Angrakha Kurti'\"'by Myntra",
+        "source": "Myntra",
+        "price": "₹620"
+      },
+      {
+        "title": "Indigo Pure Cotton Floral Printed Pleated Kurta",
+        "source": "Amazon.in",
+        "price": "₹791"
+      },
+      {
+        "title": "Women Blue Ethnic Motifs Printed Pure Cotton Kurti",
+        "source": "Rain & Rainbow",
+        "price": "₹960"
+      },
+      {
+        "title": "Moda Rapido Women Ethnic Motifs Embroidered Regular Thread Work Chanderi Cotton Kurta with Trousers & With",
+        "source": "Myntra",
+        "price": "₹3,999"
+      },
+      {
+        "title": "Women Arayna Women’s 100% Pure Cotton Printed Kurta Pant Dupatta Set",
+        "source": "Amazon.in",
+        "price": "₹899"
+      },
+      {
+        "title": "Aramya Pink Kaftan Kurta ladies Soft Cotton",
+        "source": "Aramya",
+        "price": "₹599"
+      },
+      {
+        "title": "Sangria Ethnic Motifs Printed Pure Cotton Kurta With Palazzos & Dupatta (M) by Myntra",
+        "source": "Myntra",
+        "price": "₹1,146"
+      },
+      {
+        "title": "Rimeline Women’s Cotton Anarkali Kurta | Printed Flared Ethnic Kurti with 3/4 Sleeves | Festive & Casual Wear",
+        "source": "Amazon.in",
+        "price": "₹849"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 7,
+      "online_only_brand": 0,
+      "potential_brand": 3
+    },
+    "brands_extracted": [
+      {
+        "brand": "Rust Orange",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "AJIO.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Vastrakaya",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Printed Pleated",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Rain & Rainbow",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Chanderi",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Printed",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Aramya",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Pure",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Women’s",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Rust Orange",
+        "query": "Rust Orange store",
+        "is_short_name": false,
+        "total_results": 0,
+        "correct_within_radius": 0,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [],
+        "sample_types": []
+      },
+      {
+        "brand": "AJIO.com",
+        "query": "AJIO.com store",
+        "is_short_name": false,
+        "total_results": 0,
+        "correct_within_radius": 0,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [],
+        "sample_types": []
+      },
+      {
+        "brand": "Vastrakaya",
+        "query": "Vastrakaya store",
+        "is_short_name": false,
+        "total_results": 13,
+        "correct_within_radius": 1,
+        "wrong_business": 5,
+        "too_far": 4,
+        "was_cached": false,
+        "sample_titles": [
+          "Vastra Collection Powai",
+          "Vastrakaya the hub of rental and customized costume",
+          "Vastralay Boutique",
+          "Vastrkaya",
+          "Vastra kaya by khushi"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Clothing store",
+          "Boutique",
+          "Clothing store",
+          "Clothing store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "Nike Air Max sneakers men",
+    "audience": "male",
+    "city": "Bangalore",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Nike Air Max 90 Men's",
+        "source": "Myntra",
+        "price": "₹9,995"
+      },
+      {
+        "title": "Nike Air Max Alpha Trainer 5 Men's Training Shoes",
+        "source": "AJIO.com",
+        "price": "₹5,058.90"
+      },
+      {
+        "title": "Nike Air Max SC Men's Shoes",
+        "source": "Amazon.in",
+        "price": "₹5,994"
+      },
+      {
+        "title": "Nike Air Max SC Leather Men's Shoes",
+        "source": "Tata CLiQ Jewellery",
+        "price": "₹3,499"
+      },
+      {
+        "title": "Nike Air Max 90 Premium Men's Shoes",
+        "source": "VegNonVeg",
+        "price": "₹12,795"
+      },
+      {
+        "title": "Nike Air Max Bolt Men's Shoes",
+        "source": "Myntra",
+        "price": "₹8,195"
+      },
+      {
+        "title": "Nike Air Max Excee Men's Shoes",
+        "source": "Amazon.in",
+        "price": "₹8,695"
+      },
+      {
+        "title": "Nike Air Max Excee Sneakers For Men",
+        "source": "Flipkart",
+        "price": "₹8,695"
+      },
+      {
+        "title": "Nike Air Max SC Women's Shoes",
+        "source": "tatacliq.com",
+        "price": "₹3,499"
+      },
+      {
+        "title": "Mens Nike Air Max 90 Drift",
+        "source": "Myntra",
+        "price": "₹14,995"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 6,
+      "online_only_brand": 0,
+      "potential_brand": 4
+    },
+    "brands_extracted": [
+      {
+        "brand": "Nike",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "AJIO.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Tata CLiQ Jewellery",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "VegNonVeg",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "tatacliq.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Mens",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Nike",
+        "query": "Nike store",
+        "is_short_name": true,
+        "total_results": 12,
+        "correct_within_radius": 9,
+        "wrong_business": 1,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "NIKE",
+          "NIKE",
+          "NIKE",
+          "Nike",
+          "NIKE"
+        ],
+        "sample_types": [
+          "Sportswear store",
+          "Sportswear store",
+          "Sportswear store",
+          "Sportswear store",
+          "Sportswear store"
+        ]
+      },
+      {
+        "brand": "AJIO.com",
+        "query": "AJIO.com store",
+        "is_short_name": false,
+        "total_results": 0,
+        "correct_within_radius": 0,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [],
+        "sample_types": []
+      },
+      {
+        "brand": "Tata CLiQ Jewellery",
+        "query": "Tata CLiQ Jewellery store",
+        "is_short_name": false,
+        "total_results": 16,
+        "correct_within_radius": 0,
+        "wrong_business": 10,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "ZOYA - From the House of TATA | Diamond Jewellery Store",
+          "Tanishq Jewellery - Bangalore - Dickenson Road",
+          "Westside",
+          "Tanishq Jewellery - Bengaluru - Koramangala",
+          "Westside - Magrath Store, Bangalore"
+        ],
+        "sample_types": [
+          "Jewelry store",
+          "Jewelry store",
+          "Jewelry store",
+          "Jewelry store",
+          "Fashion accessories store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "Levi's slim fit jeans men",
+    "audience": "male",
+    "city": "Mumbai",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Men Lightly Washed 505 Straight Jeans",
+        "source": "ajio.com",
+        "price": "₹1,911"
+      },
+      {
+        "title": "Levi's 511 Men Slim Fit Cargo NykaaMan",
+        "source": "Amazon.in",
+        "price": "₹1,330"
+      },
+      {
+        "title": "Levi's Men's Regular Fit Cotton Jeans (005051502-240_Beige, Caraway_34)",
+        "source": "amazon.in",
+        "price": "₹16,447"
+      },
+      {
+        "title": "Men's 505 Regular Fit Jeans",
+        "source": "amazon.in",
+        "price": "₹21,882.60"
+      },
+      {
+        "title": "LEVIS Men Mid-Rise Straight Jeans For Men (Navy, 32)",
+        "source": "AJIO.com",
+        "price": "₹6,119.10"
+      },
+      {
+        "title": "Levi's Men Slim Fit",
+        "source": "Amazon.in",
+        "price": "₹1,749"
+      },
+      {
+        "title": "LEVIS Men Mid-Rise Straight Jeans For Men (Navy, 40)",
+        "source": "AJIO.com",
+        "price": "₹6,119.10"
+      },
+      {
+        "title": "LEVI'S Men Lightly Washed 505 Straight Jeans For Men (Indigo, 28)",
+        "source": "AJIO.com",
+        "price": "₹1,645"
+      },
+      {
+        "title": "LEVIS Men Washed Mid-Rise Straight Jeans For Men (Blue, 34)",
+        "source": "AJIO.com",
+        "price": "₹4,679.10"
+      },
+      {
+        "title": "Men 505 Lightly Washed Mid-Rise Straight Jeans",
+        "source": "ajio.com",
+        "price": "₹1,862"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 4,
+      "online_only_brand": 0,
+      "potential_brand": 6
+    },
+    "brands_extracted": [
+      {
+        "brand": "ajio.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Levi's",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Regular",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "ajio.com",
+        "query": "ajio.com store",
+        "is_short_name": false,
+        "total_results": 0,
+        "correct_within_radius": 0,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [],
+        "sample_types": []
+      },
+      {
+        "brand": "Levi's",
+        "query": "Levi's store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 10,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Levi's Exclusive Store",
+          "Levi's Exclusive Store",
+          "Levi's Exclusive Store",
+          "Levi's Exclusive Store",
+          "Levi's Exclusive Store"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store"
+        ]
+      },
+      {
+        "brand": "Regular",
+        "query": "Regular store",
+        "is_short_name": false,
+        "total_results": 3,
+        "correct_within_radius": 1,
+        "wrong_business": 2,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "A.R. Stores",
+          "R. R. General Store",
+          "3Ediots - A Regular Fashion Wear"
+        ],
+        "sample_types": [
+          "Grocery store",
+          "General store",
+          "Men's clothing store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "casual black t-shirt men round neck",
+    "audience": "male",
+    "city": "Bangalore",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Levi'S Solid Men Round Neck T-shirt",
+        "source": "Myntra - MNow",
+        "price": "₹428"
+      },
+      {
+        "title": "Casual Tees Solid Men Round Neck",
+        "source": "Flipkart",
+        "price": "₹392"
+      },
+      {
+        "title": "Men's Plain Black Polyster compatebale T-Shirt, Crew Neck (in, Alpha, XL, Regular, Black)",
+        "source": "Amazon.in",
+        "price": "₹92"
+      },
+      {
+        "title": "Pepe Jeans Men Solid Round Neck",
+        "source": "Myntra",
+        "price": "₹447"
+      },
+      {
+        "title": "Jack&Jones Men Embroidered Cotton Round Neck T shirt",
+        "source": "Jack & Jones",
+        "price": "₹839"
+      },
+      {
+        "title": "Jockey AM74 Men Microfiber Activewear T-Shirt with Stay Fresh",
+        "source": "Flipkart",
+        "price": "₹499"
+      },
+      {
+        "title": "Urbano Fashion Solid Men Round Neck Oversized Half Sleeve Cotton T-Shirt",
+        "source": "Amazon.in",
+        "price": "₹415"
+      },
+      {
+        "title": "Roadster Men Black Solid Round Neck T-shirt",
+        "source": "Myntra - MNow",
+        "price": "₹222"
+      },
+      {
+        "title": "wrogn Men's Solid Black Oversized Crew Neck T-Shirt",
+        "source": "WROGN",
+        "price": "₹674"
+      },
+      {
+        "title": "Technosport Men Solid Slim Fit Round Neck Sports T-Shirt NykaaMan",
+        "source": "Flipkart",
+        "price": "₹305"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 6,
+      "online_only_brand": 1,
+      "potential_brand": 3
+    },
+    "brands_extracted": [
+      {
+        "brand": "Myntra - MNow",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Tees",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Plain",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Pepe",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Jack & Jones",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Microfiber Activewear",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Sleeve",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Crew",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Sports",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Myntra - MNow",
+        "query": "Myntra - MNow store",
+        "is_short_name": false,
+        "total_results": 5,
+        "correct_within_radius": 0,
+        "wrong_business": 4,
+        "too_far": 1,
+        "was_cached": false,
+        "sample_titles": [
+          "Fashion Factory Myntra",
+          "Myntra HSR Delivery Center",
+          "Myntra Mnow store",
+          "Myntra",
+          "Myntra Office"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Delivery service",
+          "Warehouse",
+          "Photo lab",
+          "Corporate office"
+        ]
+      },
+      {
+        "brand": "Tees",
+        "query": "Tees store",
+        "is_short_name": true,
+        "total_results": 20,
+        "correct_within_radius": 1,
+        "wrong_business": 9,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Tees And Knits Enterprises",
+          "Marsh Clothing",
+          "ism custom clothing",
+          "Line Podu Custom T-shirts",
+          "Your Design Store"
+        ],
+        "sample_types": [
+          "Custom t-shirt store",
+          "Custom t-shirt store",
+          "Clothing store",
+          "Custom t-shirt store",
+          "Custom t-shirt store"
+        ]
+      },
+      {
+        "brand": "Plain",
+        "query": "Plain store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 4,
+        "wrong_business": 6,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "tshirts plain customized tshirts chickpet",
+          "Plain t-shirts customized bangalore",
+          "Plain T-shrit Store",
+          "A",
+          "B.P.DHANRAJSTORE"
+        ],
+        "sample_types": [
+          "Uniform store",
+          "Custom t-shirt store",
+          "T-shirt store",
+          "General store",
+          "Grocery store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "Biba embroidered anarkali dress women",
+    "audience": "female",
+    "city": "Mumbai",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Biba Women Kurta Palazzo Set",
+        "source": "Flipkart",
+        "price": "₹4,995"
+      },
+      {
+        "title": "Biba Women Printed Kurta Set For Women (Yellow, XL)",
+        "source": "AJIO.com",
+        "price": "₹3,129.30"
+      },
+      {
+        "title": "Girls White Casual Anarkali Kurta With Pyjama Viscose Salwar Suit",
+        "source": "Biba.in",
+        "price": "₹2,799"
+      },
+      {
+        "title": "Biba Girls Floral Printed Empire Pure Cotton Kurta With Trousers & With Dupatta",
+        "source": "Biba.in",
+        "price": "₹2,599"
+      },
+      {
+        "title": "BIBA Women Poly Chanderi Straight Suit Set",
+        "source": "Amazon.in",
+        "price": "₹2,039"
+      },
+      {
+        "title": "Women's Biba Off White Printed Flared Kurta Set",
+        "source": "Myntra",
+        "price": "₹6,500"
+      },
+      {
+        "title": "Biba Women Embroidery Straight Kurta Set For Women (White, 3XL)",
+        "source": "AJIO.com",
+        "price": "₹2,518"
+      },
+      {
+        "title": "Biba Peach Polyester Embellished Anarkali Kurta With Pants & Jacket",
+        "source": "tatacliq.com",
+        "price": "₹9,995"
+      },
+      {
+        "title": "Biba Women Peach Viscose Rayon Embroidered Anarkali Kurta with Pant & Dupatta",
+        "source": "Nykaa Fashion",
+        "price": "₹1,900"
+      },
+      {
+        "title": "BIBA Women's Purple Cotton Printed Anarkali Kurta Set | Size - 46 | Purple",
+        "source": "",
+        "price": "₹2,900.00"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 4,
+      "online_only_brand": 0,
+      "potential_brand": 6
+    },
+    "brands_extracted": [
+      {
+        "brand": "Biba",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "AJIO.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Biba.in",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Poly",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Printed Flared",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "tatacliq.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Rayon",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [
+      "BIBA Women's Purple Cotton Printed Anarkali Kurta Set | Size - 46 | Purple"
+    ],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Biba",
+        "query": "Biba store",
+        "is_short_name": true,
+        "total_results": 20,
+        "correct_within_radius": 10,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "BIBA - Phoenix Market City, Mumbai",
+          "La,biba",
+          "BIBA - R City Mall, Mumbai",
+          "BIBA",
+          "Biba"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Women's clothing store",
+          "Fashion accessories store"
+        ]
+      },
+      {
+        "brand": "AJIO.com",
+        "query": "AJIO.com store",
+        "is_short_name": false,
+        "total_results": 0,
+        "correct_within_radius": 0,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": true,
+        "sample_titles": [],
+        "sample_types": []
+      },
+      {
+        "brand": "Biba.in",
+        "query": "Biba.in store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 9,
+        "wrong_business": 1,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "BIBA - Phoenix Market City, Mumbai",
+          "La,biba",
+          "BIBA - R City Mall, Mumbai",
+          "BIBA",
+          "Biba"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Women's clothing store",
+          "Fashion accessories store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "W women ethnic wear kurta set",
+    "audience": "female",
+    "city": "Bangalore",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Women's W Ecru Printed Chanderi Flared Kurta, Straight Pant and Dupatta Set",
+        "source": "W For Woman",
+        "price": "₹4,880"
+      },
+      {
+        "title": "W Ethnic Motif Print A-line Kurta Women Set",
+        "source": "W For Woman",
+        "price": "₹3,599"
+      },
+      {
+        "title": "W-Floral V-Neck Polyester Women's Kurta Set with Dupatta",
+        "source": "W For Woman",
+        "price": "₹2,320"
+      },
+      {
+        "title": "Purple Printed Flarred A-Line Kurta & Straight pant with Dupatta Set",
+        "source": "W For Woman",
+        "price": "₹2,040"
+      },
+      {
+        "title": "Purple Thread Embroidery Straight Kurta and Parallel Pant Set",
+        "source": "W For Woman",
+        "price": "₹2,400"
+      },
+      {
+        "title": "Women's Brown Floral Printed Beads Chanderi Flared Kurta, Straight Pant And Dupatta Set",
+        "source": "W For Woman",
+        "price": "₹3,640"
+      },
+      {
+        "title": "DRIP CHOWK Women Ethnic Motifs Embroidered Regular Thread Work Chanderi Silk Kurta with Trousers & with'\"'by Myntra",
+        "source": "Myntra",
+        "price": "₹1,693"
+      },
+      {
+        "title": "Purple Solid Metallic Embroidered Anarkali Kurta, Slim Pants And Dupatta Set - S",
+        "source": "W For Woman",
+        "price": "₹3,360"
+      },
+      {
+        "title": "W Ladies Woven Design Straight Kurta Set",
+        "source": "W For Woman",
+        "price": "₹4,999"
+      },
+      {
+        "title": "W Multicolored Striped Kurta Pant Set",
+        "source": "W For Woman",
+        "price": "₹1,820"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 1,
+      "online_only_brand": 0,
+      "potential_brand": 9
+    },
+    "brands_extracted": [
+      {
+        "brand": "W For Woman",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Chanderi Silk",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "W For Woman",
+        "query": "W For Woman store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 10,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "W for Woman - Jayanagar",
+          "W For Woman",
+          "W for Woman - Binnipete",
+          "W For Woman",
+          "W for Woman - Indiranagar"
+        ],
+        "sample_types": [
+          "Women's clothing store",
+          "Clothing store",
+          "Women's clothing store",
+          "Clothing store",
+          "Women's clothing store"
+        ]
+      },
+      {
+        "brand": "Chanderi Silk",
+        "query": "Chanderi Silk store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 0,
+        "wrong_business": 8,
+        "too_far": 2,
+        "was_cached": false,
+        "sample_titles": [
+          "Chanderi Sarees - Motamal Handlooms",
+          "Belli Devi Silks - Best Silk Sarees in Bangalore | Mysore Si",
+          "Silk Divine",
+          "Chanderi sarees - wholesale bazar",
+          "Discoverdiva (Visits By Appointment Only)"
+        ],
+        "sample_types": [
+          "Designer clothing store",
+          "Silk store",
+          "Women's clothing store",
+          "Saree Shop",
+          "Boutique"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "Allen Solly chinos men beige",
+    "audience": "male",
+    "city": "Mumbai",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Allen Solly Men Solid Chino",
+        "source": "Allen Solly",
+        "price": "₹2,336"
+      },
+      {
+        "title": "Allen Solly Men Slim Fit",
+        "source": "Myntra",
+        "price": "₹1,623"
+      },
+      {
+        "title": "Allen Solly Men Beige Solid Casual Trousers At NykaaMan",
+        "source": "Allen Solly",
+        "price": "₹2,164"
+      },
+      {
+        "title": "Allen Solly Men Trousers",
+        "source": "Allen Solly",
+        "price": "₹1,601"
+      },
+      {
+        "title": "Allen Solly Beige Regular Fit Chinos",
+        "source": "Tata CLiQ Fashion",
+        "price": "₹1,499"
+      },
+      {
+        "title": "Allen Solly Slim Fit Men",
+        "source": "Myntra",
+        "price": "₹1,709"
+      },
+      {
+        "title": "Allen Solly Men Casual Chino Trousers",
+        "source": "Amazon.in",
+        "price": "₹1,605.45"
+      },
+      {
+        "title": "Allen Solly Men Solid Flat Front Trousers",
+        "source": "Allen Solly",
+        "price": "₹2,336"
+      },
+      {
+        "title": "ALLEN SOLLY Men Slim Fit Flat-Front Chinos For Men (Beige, 34)",
+        "source": "AJIO.com",
+        "price": "₹1,806"
+      },
+      {
+        "title": "Allen Solly Men Regular Fit",
+        "source": "Myntra",
+        "price": "₹1,287"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 4,
+      "online_only_brand": 0,
+      "potential_brand": 6
+    },
+    "brands_extracted": [
+      {
+        "brand": "Allen Solly",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Allen",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Tata CLiQ Fashion",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "AJIO.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Allen Solly",
+        "query": "Allen Solly store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 10,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Allen Solly - Pheonix Market City Mall",
+          "Allen Solly - LBS Road, Ghatkopar (W)",
+          "Allen Solly Junior",
+          "Allen Solly Aurum mall",
+          "Allen Solly Oberoi Mall"
+        ],
+        "sample_types": [
+          "Children's clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store"
+        ]
+      },
+      {
+        "brand": "Allen",
+        "query": "Allen store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 7,
+        "wrong_business": 3,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Allen Solly - Pheonix Market City Mall",
+          "ALLEN Career Institute - Andheri East, Campus II, Mumbai | I",
+          "MARU ALLEN SOLLY",
+          "Allen Solly Aurum mall",
+          "IRTH House of Titan - Phoenix Market City Mall, Mumbai"
+        ],
+        "sample_types": [
+          "Children's clothing store",
+          "Coaching center",
+          "Clothing store",
+          "Clothing store",
+          "Bag shop"
+        ]
+      },
+      {
+        "brand": "Tata CLiQ Fashion",
+        "query": "Tata CLiQ Fashion store",
+        "is_short_name": false,
+        "total_results": 11,
+        "correct_within_radius": 0,
+        "wrong_business": 9,
+        "too_far": 1,
+        "was_cached": false,
+        "sample_titles": [
+          "Step in style",
+          "Tata Unistore",
+          "Tata CliQ Palette Store Nexus Seawoods",
+          "Westside - Chakala, Andheri",
+          "Tata CliQ Palette Store Kopa"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "E-commerce service",
+          "Cosmetics store",
+          "Clothing store",
+          "Cosmetics store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "women's formal blazer office wear",
+    "audience": "female",
+    "city": "Bangalore",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Tiptop Trends Women's Formal Blazer | Stylish Formal Casual Office Coat for Girls & Ladies",
+        "source": "Amazon.in",
+        "price": "₹892"
+      },
+      {
+        "title": "Allen Solly Women Solid Single Breasted Formal Blazer",
+        "source": "Myntra",
+        "price": "₹4,004"
+      },
+      {
+        "title": "Allen Solly Solid Single Breasted Formal Women Blazer",
+        "source": "Allen Solly",
+        "price": "₹2,580"
+      },
+      {
+        "title": "Tiptop Trends Women's Blazer | Stylish Formal Casual Office Coat for Girls & Ladies",
+        "source": "Amazon.in",
+        "price": "₹925"
+      },
+      {
+        "title": "Van Heusen Women Formal Blazer",
+        "source": "AJIO.com",
+        "price": "₹3,880.80"
+      },
+      {
+        "title": "ROCKSY Smart Casual Formal Blazer for Women, Regular Fit Stylish Blazer for Women (in, Alpha, 2XL, Regular, Black)",
+        "source": "Amazon.in",
+        "price": "₹899"
+      },
+      {
+        "title": "Golden Kite Long Sleeved Single-Breasted Blazers by Myntra",
+        "source": "Myntra",
+        "price": "₹985"
+      },
+      {
+        "title": "max Women Textured Regular Fit Blazer by Myntra",
+        "source": "maxfashion.in",
+        "price": "₹1,999"
+      },
+      {
+        "title": "Nifty Women's Formal Blazer",
+        "source": "Amazon.in",
+        "price": "₹546"
+      },
+      {
+        "title": "Allen Solly Solid Formal Women Blazer",
+        "source": "Allen Solly",
+        "price": "₹2,591"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 6,
+      "online_only_brand": 0,
+      "potential_brand": 4
+    },
+    "brands_extracted": [
+      {
+        "brand": "Tiptop",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Breasted",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Allen Solly",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Trends",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "AJIO.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Stylish",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Sleeved Single-Breasted",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "maxfashion.in",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Nifty",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Tiptop",
+        "query": "Tiptop store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 4,
+        "wrong_business": 6,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Tip Top Enterprises",
+          "Tip Top Fashion & Fabrics",
+          "Tiptop fashion",
+          "Tip Top fashion",
+          "TipTop Zella"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Clothing store",
+          "Men's clothing store",
+          "Clothing store",
+          "Bag shop"
+        ]
+      },
+      {
+        "brand": "Breasted",
+        "query": "Breasted store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 0,
+        "wrong_business": 10,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Big Hello - Plus Size Fashion Store",
+          "The Raymond shop",
+          "108 Bespoke",
+          "Bratt Hew",
+          "Blanche clothing Bangalore"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store"
+        ]
+      },
+      {
+        "brand": "Allen Solly",
+        "query": "Allen Solly store",
+        "is_short_name": false,
+        "total_results": 20,
+        "correct_within_radius": 10,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Allen Solly 100ft Road Indiranagar",
+          "Allen Solly",
+          "Allen Solly",
+          "Allen Solly - Chandra Layout Main Road,",
+          "Allen Solly"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store",
+          "Clothing store"
+        ]
+      }
+    ]
+  },
+  {
+    "query": "Max Fashion men's polo t-shirt",
+    "audience": "male",
+    "city": "Bangalore",
+    "num_shopping_results": 40,
+    "titles": [
+      {
+        "title": "Max Solid Men Round Neck Red T-shirt",
+        "source": "Flipkart",
+        "price": "₹349"
+      },
+      {
+        "title": "Max Solid Men Round Neck Green T-shirt",
+        "source": "Flipkart",
+        "price": "₹349"
+      },
+      {
+        "title": "Max Solid Men Round Neck Brown T-shirt",
+        "source": "Flipkart",
+        "price": "₹449"
+      },
+      {
+        "title": "Max Solid Men Round Neck Brown T-shirt",
+        "source": "Flipkart",
+        "price": "₹449"
+      },
+      {
+        "title": "Men Polo T-Shirt",
+        "source": "ajio.com",
+        "price": "₹499"
+      },
+      {
+        "title": "Men Polo T-Shirt",
+        "source": "ajio.com",
+        "price": "₹499"
+      },
+      {
+        "title": "Men Polo T-Shirt",
+        "source": "ajio.com",
+        "price": "₹499"
+      },
+      {
+        "title": "Men's Half Sleeves Cotton Blend Regular Fit Striped Polo T-Shirt",
+        "source": "Desertcart.ae",
+        "price": "₹892.47"
+      },
+      {
+        "title": "Max Self Design Men Polo Neck Green T-shirt",
+        "source": "Flipkart",
+        "price": "₹498"
+      },
+      {
+        "title": "Men Printed Polo T-shirt",
+        "source": "",
+        "price": "₹480.00"
+      }
+    ],
+    "sources_classified": {
+      "marketplace": 5,
+      "online_only_brand": 0,
+      "potential_brand": 5
+    },
+    "brands_extracted": [
+      {
+        "brand": "Max",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Brown",
+        "source": "title",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "ajio.com",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Desertcart.ae",
+        "source": "source",
+        "classification": "potential_store_brand"
+      },
+      {
+        "brand": "Design",
+        "source": "title",
+        "classification": "potential_store_brand"
+      }
+    ],
+    "no_brand_titles": [
+      "Men Printed Polo T-shirt"
+    ],
+    "in_store_extensions": [],
+    "maps_lookups": [
+      {
+        "brand": "Max",
+        "query": "Max store",
+        "is_short_name": true,
+        "total_results": 20,
+        "correct_within_radius": 5,
+        "wrong_business": 5,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Max - Indiranagar, Bangalore",
+          "Max",
+          "Max - Jayanagar, Bangalore",
+          "Max - Oasis Mall, Bangalore",
+          "Max - Gopalan Signature Mall OMR, Bangalore"
+        ],
+        "sample_types": [
+          "Shopping mall",
+          "Shopping mall",
+          "Clothing store",
+          "Shopping mall",
+          "Shopping mall"
+        ]
+      },
+      {
+        "brand": "Brown",
+        "query": "Brown store",
+        "is_short_name": false,
+        "total_results": 4,
+        "correct_within_radius": 3,
+        "wrong_business": 1,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [
+          "Brown Shop (Woollen Stores)",
+          "Brown Shop -The luggage boutique",
+          "Brown Shop Annexe - Woollen Store",
+          "The Luggage Boutique by Brown Shop- Brigade Road"
+        ],
+        "sample_types": [
+          "Clothing store",
+          "Luggage store",
+          "Clothing store",
+          "Bag shop"
+        ]
+      },
+      {
+        "brand": "ajio.com",
+        "query": "ajio.com store",
+        "is_short_name": false,
+        "total_results": 0,
+        "correct_within_radius": 0,
+        "wrong_business": 0,
+        "too_far": 0,
+        "was_cached": false,
+        "sample_titles": [],
+        "sample_types": []
+      }
+    ]
+  }
+]

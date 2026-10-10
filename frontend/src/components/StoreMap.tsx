@@ -14,6 +14,7 @@ interface StoreMapProps {
   userLat: number;
   userLng: number;
   selectedStore: string | null;
+  radiusKm?: number;
   onMarkerClick: (placeId: string) => void;
 }
 
@@ -22,6 +23,7 @@ export default function StoreMap({
   userLat,
   userLng,
   selectedStore,
+  radiusKm = 50,
   onMarkerClick,
 }: StoreMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -59,6 +61,11 @@ export default function StoreMap({
           'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
       });
 
+      // Prevent "Map container is already initialized" error in React Strict Mode
+      if ((mapRef.current as any)._leaflet_id) {
+        return;
+      }
+
       const map = L.map(mapRef.current!, {
         center: [userLat, userLng],
         zoom: 13,
@@ -84,6 +91,15 @@ export default function StoreMap({
       L.marker([userLat, userLng], { icon: userIcon })
         .addTo(map)
         .bindPopup('<strong>Your location</strong>');
+
+      // Draw the radius circle
+      L.circle([userLat, userLng], {
+        color: '#3b82f6',
+        fillColor: '#3b82f6',
+        fillOpacity: 0.05,
+        weight: 1,
+        radius: radiusKm * 1000
+      }).addTo(map);
 
       mapInstanceRef.current = map;
     });

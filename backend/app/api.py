@@ -182,6 +182,9 @@ async def compare(request: CompareRequest):
     """
     settings = _get_settings()
 
+    import asyncio
+    queue = asyncio.Queue()
+    
     async def event_generator():
         client = SerpApiClient(
             api_key=settings.serpapi_api_key,
@@ -195,40 +198,57 @@ async def compare(request: CompareRequest):
             "data": json.dumps({
                 "agent": "compare-prices",
                 "action": f"Comparing prices: {request.product_title[:60]}",
-                "engine": "Multi-platform (Google Shopping, Amazon, eBay)",
+                "engine": "Multi-platform",
                 "status": "running",
             }),
         }
-
-        try:
-            result = await compare_prices(
-                request.product_title,
-                request.product_attributes,
-                client,
-                request.market,
-                request.audience,
-            )
-        except Exception as e:
-            yield {
-                "event": "error",
-                "data": json.dumps({"message": f"Compare failed: {str(e)}"}),
-            }
-            return
-
-        yield {
-            "event": "trace",
-            "data": json.dumps({
+        
+        async def _send_trace(action, engine):
+            await queue.put({"event": "trace", "data": json.dumps({
                 "agent": "compare-prices",
-                "action": f"Found {len(result.offers)} offers across {len(result.search_engines_used)} platforms",
-                "engine": ", ".join(result.search_engines_used),
-                "status": "complete",
-            }),
-        }
-
-        yield {
-            "event": "compare_complete",
-            "data": json.dumps(result.model_dump()),
-        }
+                "action": action,
+                "engine": engine,
+                "status": "running",
+            })})
+        
+        async def run_compare():
+            try:
+                result = await compare_prices(
+                    request.product_title,
+                    request.product_attributes,
+                    client,
+                    request.market,
+                    request.audience,
+                    request.product_id,
+                    request.immersive_product_page_token,
+                    trace_callback=_send_trace
+                )
+                await queue.put({"event": "compare_complete", "data": json.dumps(result.model_dump())})
+            except Exception as e:
+                await queue.put({"event": "error", "data": json.dumps({"message": f"Compare failed: {str(e)})"})})
+            await queue.put(None)
+        
+        task = asyncio.create_task(run_compare())
+        
+        while True:
+            item = await queue.get()
+            if item is None:
+                break
+            
+            # If complete, we add a final trace before it
+            if item["event"] == "compare_complete":
+                result = json.loads(item["data"])
+                yield {
+                    "event": "trace",
+                    "data": json.dumps({
+                        "agent": "compare-prices",
+                        "action": f"Found {len(result['offers'])} offers across {len(result['search_engines_used'])} platforms",
+                        "engine": ", ".join(result['search_engines_used']),
+                        "status": "complete",
+                    }),
+                }
+            yield item
+            queue.task_done()
 
     return EventSourceResponse(
         event_generator(),
@@ -278,8 +298,22 @@ async def offline_stores(request: OfflineRequest):
         }
 
         try:
-            from app.store_finder import find_nearby_stores
-            result = await find_nearby_stores(request, client)
+            from app.store_finder_v2 import find_nearby_stores_v2
+            from app.cache import BrandLogDB
+            from app.store_finder import OFFLINE_RADIUS_KM
+            
+            brand_log = BrandLogDB(settings.cache_db_path)
+            stores_found = []
+            
+            async for store, tier, why_shown in find_nearby_stores_v2(request, client, brand_log):
+                store.tier = tier
+                store.why_shown = why_shown
+                stores_found.append(store)
+                yield {
+                    "event": "store_found",
+                    "data": json.dumps(store.model_dump()),
+                }
+                
         except Exception as e:
             yield {
                 "event": "error",
@@ -287,18 +321,11 @@ async def offline_stores(request: OfflineRequest):
             }
             return
 
-        # Stream each store as it's found
-        for store in result.stores:
-            yield {
-                "event": "store_found",
-                "data": json.dumps(store.model_dump()),
-            }
-
         yield {
             "event": "trace",
             "data": json.dumps({
                 "agent": "offline",
-                "action": f"Found {len(result.stores)} stores, {len(result.online_only_sellers)} sellers are online-only",
+                "action": f"Found {len(stores_found)} stores nearby",
                 "engine": "Google Maps",
                 "status": "complete",
                 "cached": any(
@@ -311,13 +338,13 @@ async def offline_stores(request: OfflineRequest):
         yield {
             "event": "offline_complete",
             "data": json.dumps({
-                "stores": [s.model_dump() for s in result.stores],
-                "online_only_sellers": result.online_only_sellers,
-                "search_engines_used": result.search_engines_used,
+                "stores": [s.model_dump() for s in stores_found],
+                "online_only_sellers": [],  # Obsolete in v2, but keeping field for compat
+                "search_engines_used": ["google_maps"],
                 "serpapi_calls": client.get_call_count(),
-                "empty_radius": result.empty_radius,
-                "radius_km": result.radius_km,
-                "brand_source_note": result.brand_source_note,
+                "empty_radius": len(stores_found) == 0 and client.get_call_count() > 0,
+                "radius_km": OFFLINE_RADIUS_KM,
+                "brand_source_note": "Brands extracted from online matches.",
             }),
         }
 

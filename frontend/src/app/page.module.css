@@ -98,6 +98,17 @@
   padding: 0 2rem 5rem;
 }
 
+.extensionBanner {
+  margin-top: 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: var(--accent-light);
+  color: var(--accent-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 /* ── Hero — left-aligned, asymmetric (DESIGN_VARIANCE=8) ────── */
 /* design-taste-frontend Rule 3: centered hero BANNED when variance>4 */
 .hero {
@@ -1485,8 +1496,8 @@
 }
 
 .audienceBtn.active {
-  background: var(--cta-bg);
-  border-color: var(--cta-bg);
+  background: var(--cta);
+  border-color: var(--cta);
   color: #ffffff;
 }
 

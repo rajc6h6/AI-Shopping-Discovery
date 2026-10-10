@@ -50,6 +50,7 @@ class ProductCandidate(BaseModel):
     rating: Optional[float] = None
     reviews: Optional[int] = None
     product_id: Optional[str] = None
+    immersive_product_page_token: Optional[str] = None
     engine_used: str
     position: int
 
@@ -93,6 +94,8 @@ class CompareRequest(BaseModel):
     product_image: Optional[str] = None
     market: str = "in"
     audience: AudienceType  # required — no default; backend rejects missing
+    product_id: Optional[str] = None
+    immersive_product_page_token: Optional[str] = None
 
 
 class CompareResult(BaseModel):
@@ -135,6 +138,8 @@ class StoreResult(BaseModel):
     online_price: Optional[str] = None
     online_link: Optional[str] = None
     maps_link: Optional[str] = None
+    tier: str = "tier3"
+    why_shown: str = ""
 
 
 class OfflineRequest(BaseModel):

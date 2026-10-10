@@ -219,3 +219,27 @@ Each entry: Options considered → Choice → Reason.
 **Choice:** **Vitest v2**
 
 **Reason:** The project has `@types/node@^20` as a devDependency and Next.js 16 pulls in `vite` with compatible peer deps. Vitest v5 has a conflicting peer on `@types/node@22+` which would require a major node types upgrade. Vitest v2 installs cleanly, runs in under 2 seconds, has an identical API surface to v5 for our use case, and doesn't require a Jest transform config for ESM packages like `eventsource-parser`.
+
+---
+
+## D18: Removing Generic Store Fallback in Offline Mode
+
+**Options:**
+1. Keep Tier 3 (Category sweep) and Tier 2 (Multi-brand chains) to ensure the map always has pins.
+2. Remove Tier 3 and Tier 2, forcing Offline mode to ONLY return the exact extracted brands.
+
+**Choice:** **Option 2 — Strict Brand-Only Searching**
+
+**Reason:** The user strongly objected to seeing generic stores ("men's clothing store" or malls) stacked on top of specific searches. By removing the fallback tiers entirely in `find_nearby_stores_v2`, we enforce strict precision over recall. If there is only one valid store for the brand, the UI will cleanly show exactly one store without padding.
+
+---
+
+## D19: LLM JSON Markdown Stripping in Parser
+
+**Options:**
+1. Rely entirely on the system prompt `response_format: { type: "json_object" }` to prevent markdown backticks.
+2. Manually strip ` ```json ` and ` ``` ` from the raw LLM output before parsing.
+
+**Choice:** **Option 2 — Manually strip markdown wrappers**
+
+**Reason:** Qwen2.5-72B (via Featherless API) occasionally wraps its JSON response in markdown blocks, even when `response_format` is provided. This caused `json.loads` to fail with a `JSONDecodeError`, which was silently swallowed, resulting in 0 items and the "We couldn't find anything" frontend error. Stripping the backticks natively in `parser.py` makes the pipeline resilient and completely fixes the 14-case regression suite.

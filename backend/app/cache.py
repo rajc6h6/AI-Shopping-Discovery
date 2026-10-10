@@ -52,3 +52,34 @@ class SerpApiCache:
 
     def close(self):
         self.conn.close()
+
+
+class BrandLogDB:
+    def __init__(self, db_path: str):
+        self._db = db_path
+        with sqlite3.connect(db_path, check_same_thread=False) as conn:
+            conn.execute("""CREATE TABLE IF NOT EXISTS brand_log (
+                brand TEXT, city_cell TEXT, tier TEXT, place_id TEXT,
+                match_score REAL, lat REAL, lng REAL, found INTEGER,
+                ts INTEGER DEFAULT (strftime('%s','now'))
+            )""")
+
+    def log_brand_search(
+        self, brand: str, city_cell: str, tier: str, place_id: Optional[str],
+        match_score: float, lat: float, lng: float, found: bool
+    ):
+        with sqlite3.connect(self._db) as conn:
+            conn.execute(
+                "INSERT INTO brand_log VALUES (?,?,?,?,?,?,?,?,strftime('%s','now'))",
+                (brand, city_cell, tier, place_id, match_score, lat, lng, int(found))
+            )
+
+    def is_negative_cached(self, brand: str, city_cell: str, ttl_days: int = 7) -> bool:
+        import time
+        cutoff = int(time.time()) - ttl_days * 86400
+        with sqlite3.connect(self._db) as conn:
+            row = conn.execute(
+                "SELECT found FROM brand_log WHERE brand=? AND city_cell=? AND ts>? ORDER BY ts DESC LIMIT 1",
+                (brand, city_cell, cutoff)
+            ).fetchone()
+        return row is not None and row[0] == 0

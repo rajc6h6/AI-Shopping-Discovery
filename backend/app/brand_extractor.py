@@ -19,12 +19,13 @@ PRODUCT_NOUNS = {
     'shirt', 'tshirt', 't-shirt', 'jacket', 'blazer', 'chinos', 'jeans',
     'pants', 'trousers', 'kurta', 'dress', 'top', 'hoodie', 'sweater',
     'bag', 'watch', 'belt', 'sunglasses', 'cap', 'hat', 'shorts', 'skirt',
-    'leggings', 'saree', 'kurti', 'kurti',
+    'leggings', 'saree', 'kurti', 'kurti', 'suit'
 }
 
-_SKIP_WORDS = {'men', "men's", 'women', "women's", 'unisex', 'new',
+_SKIP_WORDS = {'men', "men's", 'mens', 'women', "women's", 'womens', 'unisex', 'new',
                'black', 'white', 'blue', 'red', 'navy', 'grey', 'gray',
-               'beige', 'pink', 'green', 'casual', 'formal', 'classic'}
+               'beige', 'pink', 'green', 'casual', 'formal', 'classic',
+               'solid', 'striped', 'cotton', 'leather', 'synthetic'}
 
 _COMMON_WORDS = {'the', 'for', 'and', 'with', 'a', 'an', 'in', 'of', 'to', 'best', 'buy'}
 
@@ -36,12 +37,19 @@ def _is_marketplace(name: str) -> bool:
 def _extract_brand_from_title(title: str) -> str | None:
     """Extract a leading brand-like token from a product title."""
     words = title.split()
-    for i, word in enumerate(words):
-        if word.lower().rstrip('s') in PRODUCT_NOUNS and i > 0:
-            candidates = [w for w in words[max(0, i - 2):i]
-                          if w.lower() not in _SKIP_WORDS and len(w) > 1]
-            if candidates:
-                return ' '.join(candidates)
+    brand_words = []
+    
+    for word in words:
+        w_lower = word.lower().rstrip('s')
+        if w_lower in PRODUCT_NOUNS or word.lower() in _SKIP_WORDS or word.lower() in _COMMON_WORDS:
+            break
+        # Ensure we don't include purely numeric or punctuation tokens as brands
+        if len(word) > 1:
+            brand_words.append(word)
+            
+    if brand_words:
+        return ' '.join(brand_words[:3])
+
     # Fallback: first capitalised word that is not a generic term
     for word in words:
         if (word[0].isupper() and not word.isupper() and len(word) > 2

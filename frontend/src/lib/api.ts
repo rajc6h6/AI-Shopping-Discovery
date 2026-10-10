@@ -1,6 +1,6 @@
 import { createParser, type EventSourceMessage } from 'eventsource-parser';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
 // ─── Shared data types ────────────────────────────────────────────────────────
 
@@ -107,6 +107,8 @@ export interface StoreResult {
   online_price: string | null;
   online_link: string | null;
   maps_link: string | null;
+  tier: string;
+  why_shown: string;
 }
 
 export interface OfflineResult {
@@ -305,6 +307,8 @@ export async function streamCompare(
   productAttributes: Record<string, string>,
   market: string,
   audience: 'male' | 'female',
+  productId: string | null,
+  immersiveToken: string | null,
   callbacks: {
     onTrace?: (event: TraceEvent) => void;
     onComplete?: (result: CompareResult) => void;
@@ -323,6 +327,8 @@ export async function streamCompare(
         product_attributes: productAttributes,
         market,
         audience,
+        product_id: productId,
+        immersive_product_page_token: immersiveToken,
       }),
       signal,
     });

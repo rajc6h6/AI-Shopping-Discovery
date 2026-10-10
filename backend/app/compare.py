@@ -1,58 +1,10 @@
 """Compare-prices subagent: searches multiple platforms for the same product."""
 
+from typing import Optional
 from app.models import (
     CompareOffer, CompareResult, ParsedItem, ProductCandidate, VerificationResult,
 )
 from app.serpapi_client import SerpApiClient
-from app.verifier import verify_match
-
-
-def _build_compare_queries(title: str, attributes: dict, market: str) -> list[dict]:
-    """Build search queries for different platforms."""
-    search_term = title[:80]  # Truncate for search
-    queries = []
-
-    # Google Shopping (broader query for price comparison)
-    gs_params = {"q": search_term, "gl": market, "hl": "en", "num": 5}
-    if market == "in":
-        gs_params["google_domain"] = "google.co.in"
-    queries.append({"engine": "google_shopping", "params": gs_params})
-
-    # Amazon
-    amazon_domain = "amazon.in" if market == "in" else "amazon.com"
-    queries.append({
-        "engine": "amazon",
-        "params": {"search_term": search_term, "amazon_domain": amazon_domain},
-    })
-
-    # eBay (global)
-    queries.append({
-        "engine": "ebay",
-        "params": {"_nkw": search_term, "ebay_domain": "ebay.com"},
-    })
-
-    # Walmart (US only — not available in India)
-    if market == "us":
-        queries.append({
-            "engine": "walmart",
-            "params": {"query": search_term},
-        })
-
-    return queries
-
-
-def _extract_results(engine: str, data: dict) -> list[dict]:
-    """Extract product results from different engine response formats."""
-    if engine == "google_shopping":
-        return data.get("shopping_results", [])
-    elif engine == "amazon":
-        return data.get("organic_results", [])
-    elif engine == "ebay":
-        return data.get("organic_results", [])
-    elif engine == "walmart":
-        return data.get("organic_results", [])
-    return []
-
 
 async def compare_prices(
     product_title: str,
@@ -60,87 +12,135 @@ async def compare_prices(
     client: SerpApiClient,
     market: str = "in",
     audience: str = "",
+    product_id: Optional[str] = None,
+    immersive_product_page_token: Optional[str] = None,
+    trace_callback=None,
 ) -> CompareResult:
     """
     Search multiple platforms for the same product and return
     verified, price-sorted offers.
     """
-    queries = _build_compare_queries(product_title, product_attributes, market)
     offers: list[CompareOffer] = []
     engines_used: list[str] = []
+    
+    currency = "INR" if market == "in" else "USD"
 
-    # Build a reference ParsedItem for verification
-    ref_item = ParsedItem(
-        category=product_attributes.get("category", "product"),
-        brand=product_attributes.get("brand"),
-        model_name=product_attributes.get("model_name"),
-        colour=product_attributes.get("colour"),
-        material=product_attributes.get("material"),
-        gender=audience if audience else product_attributes.get("gender"),
-        is_specific=bool(product_attributes.get("brand") and product_attributes.get("model_name")),
-        source_text=product_title,
-        search_query=product_title,
-    )
-
-    for query in queries:
-        engine = query["engine"]
-        engines_used.append(engine)
-
+    # Primary: google_immersive_product
+    if immersive_product_page_token:
+        engines_used.append("google_immersive_product")
+        if trace_callback:
+            await trace_callback("fetching sellers", "Google Immersive Product")
         try:
-            data = await client.search(engine, query["params"])
-        except Exception:
-            continue  # Skip failed engines, partial results > no results
-
-        results = _extract_results(engine, data)
-        currency = "INR" if market == "in" else "USD"
-
-        for r in results[:3]:  # Top 3 per platform to bound cost
-            candidate = ProductCandidate(
-                title=r.get("title", ""),
-                price=r.get("price"),
-                extracted_price=r.get("extracted_price"),
-                currency=currency,
-                source=r.get("source", r.get("seller", engine)),
-                link=r.get("link", ""),
-                thumbnail=r.get("thumbnail"),
-                engine_used=engine,
-                position=r.get("position", 0),
-            )
-
-            verification = verify_match(ref_item, candidate, audience)
-
-            # Only include if confidence is reasonable (>0.4)
-            if verification.overall_confidence >= 0.4:
-                platform_display = {
-                    "google_shopping": "Google Shopping",
-                    "amazon": f"Amazon {'India' if market == 'in' else 'US'}",
-                    "ebay": "eBay",
-                    "walmart": "Walmart",
-                }.get(engine, engine)
-
+            data = await client.search("google_immersive_product", {
+                "immersive_product_page_token": immersive_product_page_token,
+                "gl": market,
+                "hl": "en",
+            })
+            sellers = data.get("sellers", [])
+            for seller in sellers:
+                extracted_price = seller.get("extracted_price")
+                if extracted_price is None and seller.get("extracted_base_price"):
+                    extracted_price = seller.get("extracted_base_price")
+                
                 offers.append(CompareOffer(
-                    platform=platform_display,
-                    seller=candidate.source,
-                    price=candidate.price,
-                    extracted_price=candidate.extracted_price,
+                    platform="Google Immersive Product",
+                    seller=seller.get("name", seller.get("seller", "Unknown")),
+                    price=seller.get("price"),
+                    extracted_price=extracted_price,
                     currency=currency,
-                    link=candidate.link,
-                    verified=verification.overall_confidence >= 0.6,
-                    verification=verification,
+                    link=seller.get("link", ""),
+                    verified=True,  # Same product page, so verified
+                    verification=None,
+                    shipping_info=seller.get("shipping", ""),
                 ))
+            if trace_callback:
+                await trace_callback(f"found {len(offers)} sellers", "Google Immersive Product")
+        except Exception:
+            pass
 
-    # Sort by price (cheapest first), None prices at end
-    offers_priced = sorted(
-        [o for o in offers if o.extracted_price is not None],
-        key=lambda o: o.extracted_price,
+    # Fallback 1: google_product
+    if not offers and product_id:
+        engines_used.append("google_product")
+        if trace_callback:
+            await trace_callback("falling back to Google Product", "Google Product")
+        try:
+            data = await client.search("google_product", {
+                "product_id": product_id,
+                "gl": market,
+                "hl": "en",
+            })
+            sellers = data.get("sellers_results", {}).get("online_sellers", [])
+            for seller in sellers:
+                extracted_price = seller.get("extracted_total_price")
+                if extracted_price is None:
+                    extracted_price = seller.get("extracted_base_price")
+                    
+                offers.append(CompareOffer(
+                    platform="Google Product",
+                    seller=seller.get("name", "Unknown"),
+                    price=seller.get("total_price") or seller.get("price"),
+                    extracted_price=extracted_price,
+                    currency=currency,
+                    link=seller.get("link", ""),
+                    verified=True,  # Same product ID, so verified
+                    verification=None,
+                ))
+            if trace_callback:
+                await trace_callback(f"found {len(offers)} sellers", "Google Product")
+        except Exception:
+            pass
+
+    # Fallback 2: google_shopping (Similar listings)
+    if not offers:
+        engines_used.append("google_shopping")
+        if trace_callback:
+            await trace_callback("falling back to Google Shopping", "Google Shopping")
+        try:
+            search_term = product_title[:80]
+            gs_params = {"q": search_term, "gl": market, "hl": "en", "num": 10}
+            if market == "in":
+                gs_params["google_domain"] = "google.co.in"
+
+            data = await client.search("google_shopping", gs_params)
+            results = data.get("shopping_results", [])
+            
+            for r in results:
+                seller = r.get("source", "Unknown Seller")
+                offers.append(CompareOffer(
+                    platform="Google Shopping (Similar listings)",
+                    seller=seller,
+                    price=r.get("price"),
+                    extracted_price=r.get("extracted_price"),
+                    currency=currency,
+                    link=r.get("product_link") or r.get("link", ""),
+                    verified=False,  # Needs verification
+                    verification=None,
+                ))
+            if trace_callback:
+                await trace_callback(f"found {len(offers)} sellers", "Google Shopping")
+        except Exception:
+            pass
+
+    # Drop duplicate sellers (keep lowest price), drop entries with no link
+    filtered_offers = []
+    seen_sellers = set()
+    
+    # Sort ascending by extracted_price to keep the lowest priced one when dropping duplicates
+    priced_offers = sorted(
+        [o for o in offers if o.extracted_price is not None and o.link],
+        key=lambda o: o.extracted_price
     )
-    offers_unpriced = [o for o in offers if o.extracted_price is None]
-    sorted_offers = offers_priced + offers_unpriced
+    unpriced_offers = [o for o in offers if o.extracted_price is None and o.link]
+    
+    for offer in priced_offers + unpriced_offers:
+        if offer.seller not in seen_sellers:
+            seen_sellers.add(offer.seller)
+            filtered_offers.append(offer)
 
-    cheapest_idx = 0 if offers_priced else None
+    cheapest_idx = 0 if len(priced_offers) > 0 and filtered_offers and filtered_offers[0].extracted_price is not None else None
 
     return CompareResult(
-        offers=sorted_offers,
+        offers=filtered_offers,
         cheapest_index=cheapest_idx,
         search_engines_used=engines_used,
     )

@@ -84,7 +84,15 @@ async def parse_chat(
                     ) from exc
                 raise  # non-rate-limit errors propagate immediately
 
-        parsed = json.loads(raw)
+        raw_clean = raw.strip()
+        if raw_clean.startswith("```json"):
+            raw_clean = raw_clean[7:]
+        if raw_clean.startswith("```"):
+            raw_clean = raw_clean[3:]
+        if raw_clean.endswith("```"):
+            raw_clean = raw_clean[:-3]
+            
+        parsed = json.loads(raw_clean.strip())
 
         # Handle both {"items": [...]} and bare [...]
         if isinstance(parsed, list):

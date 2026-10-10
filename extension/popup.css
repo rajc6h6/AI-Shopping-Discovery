@@ -1,0 +1,66 @@
+:root {
+  color: #111111;
+  background: #fbfbfa;
+  font-family: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.popup {
+  width: 320px;
+  padding: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #059669;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  margin: 0;
+  font-family: Rubik, "Helvetica Neue", Arial, sans-serif;
+  font-size: 21px;
+  letter-spacing: -0.03em;
+}
+
+.status {
+  min-height: 20px;
+  margin: 12px 0 8px;
+  color: #555555;
+  font-size: 13px;
+}
+
+.preview {
+  min-height: 54px;
+  margin: 0 0 16px;
+  padding: 10px;
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #787774;
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+button {
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #ea580c;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+button:hover:not(:disabled) { background: #c2410c; }
+button:disabled { cursor: not-allowed; opacity: 0.42; }

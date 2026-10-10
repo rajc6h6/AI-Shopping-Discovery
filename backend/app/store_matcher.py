@@ -4,6 +4,9 @@ Uses word-boundary matching on title + domain matching on website to avoid false
 """
 
 import re
+from difflib import SequenceMatcher
+
+CLOTHING_TYPES = {"clothing_store", "apparel", "clothing", "fashion", "boutique"}
 
 
 def normalise(name: str) -> str:
@@ -49,3 +52,37 @@ def match_store_to_seller(
         return True, f"Website '{website[:60]}' matches seller '{seller_name}'"
 
     return False, f"No match: '{store_data.get('title', '')}' ≠ '{seller_name}'"
+
+
+def _is_clothing_type(place: dict) -> bool:
+    types = place.get("types", []) or []
+    return any(t.lower() in CLOTHING_TYPES for t in types)
+
+
+def match_store_to_brand(place: dict, brand: str, is_chain: bool = False) -> tuple[bool, str]:
+    """
+    Match a Maps place to a brand name.
+    Short names (<=4 chars): exact whole-token + clothing type OR domain.
+    Long names: fuzzy 90+.
+    """
+    title = normalise(place.get("title", ""))
+    brand_norm = normalise(brand)
+    website = (place.get("website") or "").lower()
+    brand_slug = brand_norm.replace(" ", "")
+
+    if len(brand_norm) <= 4:
+        pattern = r'\b' + re.escape(brand_norm) + r'\b'
+        token_match = bool(re.search(pattern, title))
+        domain_match = bool(brand_slug and brand_slug in website)
+        type_match = _is_clothing_type(place)
+        if token_match and (type_match or domain_match):
+            return True, f"Short-name token match '{brand}' with clothing type/domain"
+        return False, f"Short-name '{brand}' needs token+type or domain"
+    else:
+        ratio = SequenceMatcher(None, brand_norm, title).ratio()
+        if ratio >= 0.9:
+            return True, f"Fuzzy match {ratio:.2f} for '{brand}'"
+        # also check if brand is fully contained in title
+        if brand_norm in title:
+            return True, f"Brand '{brand}' contained in title"
+        return False, f"Fuzzy {ratio:.2f} < 0.9 for '{brand}'"

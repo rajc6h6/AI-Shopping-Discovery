@@ -32,3 +32,4 @@ Thumbs.db
 
 # Agents internal
 .superpowers/
+.agents/mcp_config.json

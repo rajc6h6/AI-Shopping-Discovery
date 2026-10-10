@@ -122,7 +122,7 @@ export default function OfflineMode({
       (location.status !== 'granted') ||
       searchDone ||
       loading ||
-      sellers.length === 0
+      (sellers.length === 0 && (!verifiedResults || verifiedResults.length === 0))
     ) return;
 
     setLoading(true);
@@ -225,6 +225,7 @@ export default function OfflineMode({
               userLat={location.lat}
               userLng={location.lng}
               selectedStore={selectedStore}
+              radiusKm={radiusKm}
               onMarkerClick={handleMarkerClick}
             />
           ) : (
@@ -304,7 +305,12 @@ export default function OfflineMode({
                   {/* Header row */}
                   <div className={styles.storeHeader}>
                     <div>
-                      <h4 className={styles.storeName}>{store.title}</h4>
+                      <div className={styles.titleRow}>
+                        <h4 className={styles.storeName}>{store.title}</h4>
+                        {store.tier === 'tier1' && <span className={`${styles.tierBadge} ${styles.tier1}`}>Brand store</span>}
+                        {store.tier === 'tier2' && <span className={`${styles.tierBadge} ${styles.tier2}`}>Multi-brand chain</span>}
+                        {store.tier === 'tier3' && <span className={`${styles.tierBadge} ${styles.tier3}`}>Nearby shop</span>}
+                      </div>
                       {store.store_type && (
                         <span className={styles.storeType}>{store.store_type}</span>
                       )}
@@ -355,7 +361,7 @@ export default function OfflineMode({
 
                   {/* Evidence line */}
                   <div className={styles.evidenceLine}>
-                    {store.evidence_text}
+                    {store.why_shown || store.evidence_text}
                   </div>
 
                   {/* Actions */}
@@ -417,8 +423,8 @@ export default function OfflineMode({
           {searchDone && stores.length === 0 && onlineOnly.length === 0 && (
             <div className={styles.emptyState}>
               <Storefront size={40} weight="light" className={styles.emptyIcon} />
-              <h4>No nearby stores found</h4>
-              <p>None of the verified sellers appear to have physical stores near your location. You can still buy online.</p>
+              <h4>No stores found within {radiusKm} km</h4>
+              <p>We checked nearby areas but couldn't find physical stores for these brands. You can still buy online.</p>
             </div>
           )}
 
