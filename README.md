@@ -4,7 +4,7 @@
 
 Built for the [SerpApi Hackathon](https://serpapi.com) in the General Track.
 
-*Note: It is unconfirmed whether this project existed before the hackathon. Please provide this information.*
+*Note: this is built in this hackathon period.
 
 ---
 
@@ -25,8 +25,8 @@ Paste the AI chat here. We:
 
 ## Demo
 
-- **Video:** [VIDEO_URL]
-- **Live Site:** [LIVE_URL]
+- **Video:** https://youtu.be/2TrHVOB3AkQ
+
 
 ### Screenshots
 *(See `docs/images/` for full-resolution screenshots)*
@@ -173,5 +173,5 @@ serpapi/
 
 ## License and Author
 
-**Author:** [OWNER_NAME_REQUIRED]
+**Author:** Raj
 **License:** MIT License
